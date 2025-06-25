@@ -1,25 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, MessageCircle, ArrowDown, Sparkles } from 'lucide-react';
+import { TypeAnimation } from 'react-type-animation';
 
 const Hero = ({ onMouseEnter, onMouseLeave }) => {
-  const typingRef = useRef(null);
-
-  useEffect(() => {
-    const text = "AI Enthusiast, UI Designer and Developer";
-    let index = 0;
-    
-    const typeWriter = () => {
-      if (index < text.length) {
-        typingRef.current.textContent += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, 100);
-      }
-    };
-    
-    setTimeout(typeWriter, 1000);
-  }, []);
-
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
@@ -60,14 +44,18 @@ const Hero = ({ onMouseEnter, onMouseLeave }) => {
               <span className="text-white">Ragella</span>
             </motion.h1>
 
-            {/* Title */}
+            {/* Title - Typing Animation */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
               className="text-xl md:text-2xl text-gray-300 mb-6"
             >
-              <span ref={typingRef} className="typing-animation"></span>
+              <TypeAnimation
+                sequence={['AI Enthusiast, UI Designer and Developer', 2000, 'AI Enthusiast', 1000, 'UI Designer', 1000, 'Developer', 1000]}
+                speed={50}
+                repeat={Infinity}
+              />
             </motion.div>
 
             {/* Tagline */}
