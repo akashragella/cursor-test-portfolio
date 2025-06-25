@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ff88;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00cc6a;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #00ff88;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.1s ease;
+}
+
+.custom-cursor.hover {
+  transform: scale(1.5);
+  background-color: rgba(0, 255, 136, 0.1);
+}
+
+/* Glow Effects */
+.glow-text {
+  text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88;
+}
+
+.glow-border {
+  box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88;
+}
+
+/* Cyber Grid Background */
+.cyber-bg {
+  background-image: 
+    linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(45deg, #00ff88, #00ffff, #ff0080, #8b5cf6);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: opacity 0.5s ease;
+}
+
+.preloader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Typing Animation */
+.typing-animation {
+  overflow: hidden;
+  border-right: 2px solid #00ff88;
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #00ff88; }
+}
+
+/* Parallax Effect */
+.parallax {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Button Hover Effects */
+.btn-cyber {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-cyber::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-cyber:hover::before {
+  left: 100%;
+}
+
+/* Card Hover Effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
+}
+
+/* Skill Bar Animation */
+.skill-bar {
+  background: linear-gradient(90deg, #00ff88, #00ffff);
+  background-size: 200% 100%;
+  animation: skill-fill 2s ease forwards;
+}
+
+@keyframes skill-fill {
+  0% { width: 0%; }
+  100% { width: var(--skill-level); }
+}
+
+/* Floating Animation */
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Pulse Glow */
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 15px #00ff88; }
+  100% { box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cyber-bg {
+    background-size: 30px 30px;
+  }
+  
+  .custom-cursor {
+    display: none;
+  }
+}
+
+/* Dark mode specific styles */
+.dark {
+  color-scheme: dark;
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid #00ff88;
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background: rgba(0, 255, 136, 0.3);
+  color: #ffffff;
+} 
